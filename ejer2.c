@@ -1,20 +1,24 @@
-/* Escriba una función que convierta mayúsculas a minúsculas. Sin usar if-while-for*/
-
-#include <stdio.h>
+/* Escriba una función strindex(t,s) la cual retorne la posición mas al final t en S. Si no encuentra t retornar -1*/
 
 
-void convert(char *mayus,char *minus)
+int strinde(char *c,char t)
 {
-    char x;
+    int i;
+    int pos=0;
+    for (i = 0; *(c+i)! = '\0';i++)
+    {
+        if(*(c+i)==t)
+            pos=i;
+    }
+    if(pos>0)
+        return pos;
+    else
+        return -1;
 
-    x = *mayus;
-    *mayus = *minus;
-    *minus = x;
 }
 main()
 {
-    char a = 'A', b = 'a';
-    convert(&a,&b);
-    printf("%d",a);
+    char a='o';
+    char name[]="ciencia de la computacion";
+    printf("%d",strinde(name,a));
 }
-
