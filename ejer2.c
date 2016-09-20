@@ -5,7 +5,7 @@ int strinde(char *c,char t)
 {
     int i;
     int pos=0;
-    for (i = 0; *(c+i)! = '\0';i++)
+    for (i = 0; *(c+i)!= '\0';i++)
     {
         if(*(c+i)==t)
             pos=i;
