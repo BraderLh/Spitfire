@@ -1,63 +1,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*struct sname
-{
-    int a;
-    char b;
-};
-
-
-main ()
-{
-    struct sname s;
-    s.a = 5;
-    s.b = 'x';
-}/*
-struct node
+struct registro
 {
     int val;
-    struct node *next;
+    struct registro *next;
 };
+typedef struct registro _nodo;
+
+_nodo *crearLista(_nodo *apuntador)
+{
+    return (apuntador = NULL);
+}
+_nodo *insertarEnLista(int n,_nodo *apuntador)
+{
+    _nodo *registroNuevo,*apuntadorAuxiliar;
+
+    registroNuevo = (_nodo *) malloc(sizeof(_nodo));
+
+    if(registroNuevo != NULL)
+    {
+        registroNuevo->val = n;
+        registroNuevo->next = NULL;
+
+        if (apuntador == NULL)
+            apuntador = registroNuevo;
+        else
+        {
+            apuntadorAuxiliar = apuntador;
+            while (apuntadorAuxiliar->next != NULL)
+                apuntadorAuxiliar = apuntadorAuxiliar->next;
+                apuntadorAuxiliar->next = registroNuevo;
+        }
+    }
+    return apuntador;
+}
+void imprimirLista(_nodo *apuntador)
+{
+    _nodo *apuntadorAuxiliar;
+    apuntadorAuxiliar = apuntador;
+    printf("Contenido de la lista: inicioLista->");
+    while(apuntadorAuxiliar!=NULL)
+    {
+        printf("%d ->", apuntadorAuxiliar->val);
+        apuntadorAuxiliar = apuntadorAuxiliar->next;
+    }
+    printf("NULL\n");
+    return;
+}
+
 main()
 {
-    struct node *head, *middle, *tail;
-    head = malloc (sizeof(struct node));
-    middle = malloc (sizeof(struct node));
-    tail = malloc (sizeof(struct node));
-    head -> val = 1;
-    middle -> val = 2;
-    tail -> val = 3;
-    head -> next = middle;
-    middle -> next = tail;
-    tail -> next = NULL;
+    _nodo *inicioLista;
 
-    /*struct node *t;
-    t = head;
-    printf("%d\t", t->val);
-    t = t -> next;
-    printf("%d\t", t->val);
-    t = t -> next;
-    printf("%d\t", t -> val);*/
+    inicioLista = crearLista(inicioLista);
+    inicioLista = insertarEnLista(1, inicioLista);
+    inicioLista = insertarEnLista(1, inicioLista);
+    inicioLista = insertarEnLista(1, inicioLista);
+    imprimirLista(inicioLista);
+    return EXIT_SUCCESS;
+}
 
-}
-struct node *crearlista(int n)
-{
-    struct node *head;
-    struct node *prev;
-    struct node *cur;
-    int i;
-    head = malloc (sizeof(struct node));
-    head -> val = 1;
-    prev = head;
-    for (i = 2; i <= n; i++)
-        {
-            cur = malloc (sizeof (struct node));
-            cur -> val = i;
-            prev -> next = cur;
-            prev = cur;
-        }
-        prev -> next = NULL;
-    return head;
-}
 
